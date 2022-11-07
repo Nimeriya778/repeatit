@@ -1,4 +1,4 @@
-*.sqlite
+db.sqlite3
 .mypy_cache
 /dist
 __pycache__
@@ -6,3 +6,5 @@ __pycache__
 .tox
 /.idea/
 /venv/
+*.pyc
+.mypy_cache/
