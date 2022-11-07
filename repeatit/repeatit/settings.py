@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "repeatit_app.apps.RepeatitAppConfig",
 ]
 
 MIDDLEWARE = [
