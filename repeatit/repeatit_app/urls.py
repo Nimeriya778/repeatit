@@ -1,10 +1,12 @@
+"""
+URL configuration to map URL paths to the application views
+"""
+
 from django.urls import path
-from django.views.generic import TemplateView
+from .views import FlashcardListView, FlashcardCreateView
+
 
 urlpatterns = [
-    path(
-        "",
-        TemplateView.as_view(template_name="cards/base.html"),
-        name="home"
-    ),
+    path("", FlashcardListView.as_view(), name="flashcard-list"),
+    path("new", FlashcardCreateView.as_view(), name="flashcard-create"),
 ]
