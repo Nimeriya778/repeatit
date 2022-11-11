@@ -1,7 +1,7 @@
 {% extends "repeatit_app/base.html" %}
 {% block content %}
   <h2>All Cards</h2>
-  {% for card in card_list %}
+  {% for card in flashcard_list %}
     <h3>🗃 {{ card.box }} Box</h3>
       <article>{{ card }}</article>
       {% include "repeatit_app/card.html" %}
