@@ -2,7 +2,7 @@
 Web pages description
 """
 
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import Flashcard
 
@@ -26,3 +26,12 @@ class FlashcardCreateView(CreateView):
     model = Flashcard
     fields = ["question", "answer", "box"]
     success_url = reverse_lazy("flashcard-create")
+
+
+class FlashcardUpdateView(FlashcardCreateView, UpdateView):
+    """
+    The form for editing an existing flashcard.
+    After the form is filled out and submitted, the redirects to the homepage.
+    """
+
+    success_url = reverse_lazy("flashcard-list")

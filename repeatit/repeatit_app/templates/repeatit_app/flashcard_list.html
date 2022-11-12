@@ -1,9 +1,12 @@
 {% extends "repeatit_app/base.html" %}
+{% load humanize %}
 {% block content %}
   <h2>All Cards</h2>
+<a href="{% url 'flashcard-create' %}" role="button">Create New Card</a>
   {% for card in flashcard_list %}
-    <h3>🗃 {{ card.box }} Box</h3>
-      <article>{{ card }}</article>
-      {% include "repeatit_app/card.html" %}
+    {% ifchanged %}
+      <h3>🗃 {{ card.box | ordinal }} Box</h3>
+    {% endifchanged %}
+    {% include "repeatit_app/card.html" %}
   {% endfor %}
 {% endblock content %}
