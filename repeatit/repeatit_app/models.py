@@ -24,3 +24,20 @@ class Flashcard(models.Model):
 
     def __str__(self):
         return str(self.question)
+
+    def move(self, can_recall):
+        """
+        If a learner can recall the solution written on a flashcard,
+        then the flashcard moves to the next box.
+        Otherwise, the flashcard moves to the first box.
+        """
+
+        if can_recall:
+            group = self.box + 1
+        else:
+            group = BOXES[0]
+
+        if group in BOXES:
+            self.box = group
+            self.save()
+        return self
