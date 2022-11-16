@@ -37,3 +37,22 @@ class FlashcardUpdateView(UpdateView):
     model = Flashcard
     fields = ["question", "answer", "box"]
     success_url = reverse_lazy("flashcard-list")
+
+
+class BoxView(FlashcardListView):
+    """
+    The webpage displays only the flashcards from the current box.
+    """
+
+    template_name = "repeatit_app/box.html"
+
+    def get_queryset(self):
+
+        return Flashcard.objects.filter(box=self.kwargs["box_num"])  # pylint:disable=no-member
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context["box_number"] = self.kwargs["box_num"]
+
+        return context
