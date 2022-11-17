@@ -2,6 +2,7 @@
 Web pages description
 """
 
+import random
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import Flashcard
@@ -47,12 +48,18 @@ class BoxView(FlashcardListView):
     template_name = "repeatit_app/box.html"
 
     def get_queryset(self):
+        # pylint:disable=no-member
 
-        return Flashcard.objects.filter(box=self.kwargs["box_num"])  # pylint:disable=no-member
+        return Flashcard.objects.filter(
+            box=self.kwargs["box_num"]
+        )
 
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
         context["box_number"] = self.kwargs["box_num"]
+
+        if self.object_list:
+            context["check_card"] = random.choice(self.object_list)
 
         return context

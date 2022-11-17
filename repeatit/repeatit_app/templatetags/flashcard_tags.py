@@ -3,7 +3,7 @@ Custom template tag registration
 """
 
 from django import template
-from repeatit.repeatit_app.models import BOXES, Flashcard
+from repeatit_app.models import BOXES, Flashcard
 
 
 register = template.Library()
@@ -15,10 +15,14 @@ def boxes_as_links() -> dict:
     Return the context which is used in the 'box_links.html' template.
     """
 
+    # pylint:disable=no-member
+
     boxes = []
 
     for box_num in BOXES:
-        card_count = Flashcard.objects.filter(box=box_num).count()  # pylint:disable=no-member
+        card_count = Flashcard.objects.filter(
+            box=box_num
+        ).count()
         boxes.append(
             {
                 "number": box_num,
