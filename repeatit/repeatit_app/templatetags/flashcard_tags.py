@@ -20,9 +20,7 @@ def boxes_as_links() -> dict:
     boxes = []
 
     for box_num in BOXES:
-        card_count = Flashcard.objects.filter(
-            box=box_num
-        ).count()
+        card_count = Flashcard.objects.filter(box=box_num).count()
         boxes.append(
             {
                 "number": box_num,
