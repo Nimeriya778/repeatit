@@ -1,0 +1,12 @@
+<form method="post">
+
+  {% csrf_token %}
+    <input type="hidden" name="card_id" value="{{ card.id }}">
+    <input type="hidden" name="can_recall" value="{{ can_recall }}">
+    {% if can_recall %}
+      <input type="submit" value="✅ I know"/>
+    {% else %}
+      <input type="submit" value="❌ I don't know"/>
+    {% endif %}
+
+</form>

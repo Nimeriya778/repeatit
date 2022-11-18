@@ -9,5 +9,8 @@
       <summary>Show Answer</summary>
       <p>{{ card.answer }}</p>
     </details>
+  <hr>
+    {% include "repeatit_app/check_form.html" with can_recall=True %}
+    {% include "repeatit_app/check_form.html" with can_recall=False %}
   {% endif %}
 </article>
